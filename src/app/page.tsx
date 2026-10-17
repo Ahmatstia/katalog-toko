@@ -1,19 +1,31 @@
-import CatalogPreview from "../components/CatalogPreview";
+import Header from "../components/Header";
+import Hero from "../components/Hero";
+import CatalogSection from "../components/CatalogSection";
+import StoreInfo from "../components/StoreInfo";
+import Footer from "../components/Footer";
 
 export default function Home() {
-  return (
-    <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col justify-center gap-6 px-4 py-12">
-      <div className="flex flex-col gap-2">
-        <p className="w-fit rounded bg-amber-100 px-2 py-1 text-sm font-medium text-amber-900">
-          Placeholder — bukan toko resmi
-        </p>
-        <h1 className="text-3xl font-semibold">[Nama Toko] — Katalog Produk</h1>
-        <p className="text-neutral-700">
-          Tahap 2: Pengujian integrasi loader dan parser data CSV Google Sheets.
-        </p>
-      </div>
+  const storeName = "[Nama Toko]";
 
-      <CatalogPreview />
-    </main>
+  return (
+    <div className="flex min-h-screen flex-col bg-neutral-50 text-neutral-900">
+      {/* Header dengan tombol kontak WhatsApp */}
+      <Header storeName={storeName} />
+
+      {/* Konten Utama */}
+      <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-8 sm:px-6 space-y-12 sm:space-y-16">
+        {/* Seksi Hero */}
+        <Hero storeName={storeName} />
+
+        {/* Seksi Katalog Utama (Search, Filter Kategori, Grid Produk, Modal Detail) */}
+        <CatalogSection />
+
+        {/* Seksi Informasi Toko & Cara Bertanya */}
+        <StoreInfo />
+      </main>
+
+      {/* Footer */}
+      <Footer storeName={storeName} />
+    </div>
   );
 }

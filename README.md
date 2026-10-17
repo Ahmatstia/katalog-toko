@@ -2,7 +2,7 @@
 
 Website katalog produk dan harga untuk toko lokal. Pelanggan melihat produk lalu menghubungi toko lewat WhatsApp. **Bukan e-commerce**: tidak ada checkout, pembayaran, login, database, atau backend.
 
-> **Status:** Phase 1 (scaffold dan bukti static export). Halaman saat ini hanya placeholder. Nama toko, nomor WhatsApp, dan data produk belum dikonfirmasi pemilik dan tidak ada di repository ini.
+> **Status:** Phase 3 (UI MVP & Data Loader). Seluruh komponen UI inti (Header, Hero, Katalog interaktif, Pencarian, Filter Kategori, Modal Detail, Informasi Toko, dan WhatsApp Click to Chat) telah berfungsi. Data toko resmi, nomor WhatsApp, dan foto produk masih menunggu konfirmasi pemilik toko.
 
 ## Teknologi
 
@@ -28,11 +28,12 @@ Lalu isi `.env.local` (lihat bagian *Konfigurasi URL CSV*).
 | Perintah | Fungsi |
 |---|---|
 | `npm run dev` | Menjalankan server pengembangan di http://localhost:3000 |
-| `npm run lint` | Memeriksa kode dengan ESLint |
-| `npx tsc --noEmit` | Memeriksa tipe TypeScript |
-| `npm run build` | Membuat static export ke folder `out/` |
+| `npm run lint` | Memeriksa gaya dan aturan kode dengan ESLint |
+| `npm run typecheck` | Memeriksa tipe data dengan TypeScript (`tsc --noEmit`) |
+| `npm test` | Menjalankan rangkaian unit test otomatis dengan Vitest |
+| `npm run build` | Membuat static export aplikasi ke folder `out/` |
 
-Sebelum menganggap perubahan selesai, jalankan `lint`, `tsc`, dan `build`.
+Sebelum mengajukan perubahan atau commit, selalu jalankan `npm run lint`, `npm run typecheck`, `npm test`, dan `npm run build`.
 
 > `npm start` tidak dipakai karena proyek tidak memakai server Node.js. Untuk melihat hasil build, sajikan folder `out/` dengan static server apa pun.
 
@@ -61,13 +62,15 @@ katalog-toko/
 ├── .agents/rules/            # Aturan UI/UX untuk agent
 ├── public/
 │   └── products/             # Foto produk (mis. cabai-bubuk.webp)
-├── src/app/                  # Halaman, layout, dan CSS global (App Router)
-├── next.config.ts            # Static export
+├── src/
+│   ├── app/                  # Halaman, layout, dan CSS global (App Router)
+│   ├── components/           # Komponen UI (Header, Hero, CatalogSection, ProductCard, dll.)
+│   └── lib/                  # Logika CSV loader, parsing, format Rupiah, dan WhatsApp
+├── next.config.ts            # Konfigurasi static export Next.js
+├── vitest.config.mts         # Konfigurasi automated testing Vitest
 ├── .env.example              # Contoh konfigurasi (placeholder saja)
-└── out/                      # Hasil build (dibuat otomatis, tidak di-commit)
+└── out/                      # Hasil build statis (dibuat otomatis, tidak di-commit)
 ```
-
-Folder `src/lib/` dan `src/components/` akan ditambahkan pada Phase 2 dan 3.
 
 ## Foto produk
 

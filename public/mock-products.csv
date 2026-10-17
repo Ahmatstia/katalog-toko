@@ -1,0 +1,6 @@
+id,name,category,price_idr,unit,image_path,description,is_published,sort_order,updated_at
+P001,Cabai Bubuk (Dummy),Bumbu Dapur,15000,pack,/products/cabai-bubuk.webp,Cabai merah kering giling murni untuk bumbu masakan harian.,TRUE,1,2026-10-17
+P002,Gula Pasir (Dummy),Sembako,18000,kg,/products/gula-pasir.webp,Gula kristal putih murni berkualitas pilihan keluarga.,TRUE,2,2026-10-17
+P003,Minyak Goreng 2L (Dummy),Sembako,34000,pouch,,Minyak kelapa sawit jernih kemasan pouch 2 liter.,TRUE,3,2026-10-17
+P004,Garam Dapur Halus (Dummy),Bumbu Dapur,3500,bungkus,,Garam dapur beryodium tinggi untuk penyedap alami.,TRUE,4,2026-10-17
+P005,Barang Rahasia Belum Tayang,Internal,99999,pcs,,Produk draft yang tidak boleh tampil di katalog.,FALSE,5,2026-10-17
