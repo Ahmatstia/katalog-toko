@@ -31,6 +31,8 @@ Catatan hasil implementasi scaffold. Ini bukan keputusan produk baru dan tidak m
 | T-006 | Temuan `npm audit`: 5 "high", satu akar. | Paket `braces <= 3.0.3` (GHSA-vfj7-8cjw-p6xm, DoS via pola bersarang dalam). Tidak ada versi perbaikan saat dicek. Hanya lewat devDependency `eslint-config-next` → `@next/eslint-plugin-next` → `fast-glob` → `micromatch` → `braces`; `npm audit --omit=dev` melaporkan 0 temuan. `npm audit fix --force` ditolak karena akan menurunkan `eslint-config-next` ke 14.x (breaking). Dependency tidak diubah; cek ulang pada Phase 4 dan sebelum deployment. |
 | T-007 | Rangkaian test Phase 2 (Vitest). | Vitest 5.0.5 terpasang bersama `@types/node@^22`. Menggunakan konfigurasi ESM `vitest.config.mts`. 30 unit test mencakup parser Papa Parse, validasi path foto, normalisasi boolean, pengurutan, format Rupiah, dan penanganan kegagalan fetch. |
 | T-008 | Implementasi UI MVP Phase 3. | Komponen modular dibangun: Header, Hero, CatalogSection, ProductCard, ProductDetailModal, ProductImage, StoreInfo, dan Footer. Tautan WhatsApp ter-encode dengan template PRD Bab 11. Modal mendukung tombol Escape dan penguncian scroll body. Seluruh teks identitas toko, nomor kontak, jam buka, dan area layanan berlabel placeholder sampai pemilik toko mengonfirmasi. |
+| T-009 | Hasil QA Phase 4 & Path Relatif Preview. | Pengujian headless Chrome pada 4 viewport (360px, 390px, 768px, 1280px) lulus 0 horizontal scroll overflow dan 0 console error. 37 unit test lulus. `resolveCatalogConfig` mendukung path root-relatif berakhiran `.csv` (mis. `/mock-products.csv`) untuk memudahkan deployment preview di Cloudflare Pages tanpa hardcode domain. |
+
 
 ## Belum diputuskan / perlu validasi
 

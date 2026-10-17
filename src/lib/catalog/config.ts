@@ -15,6 +15,17 @@ export function resolveCatalogConfig(raw: string | undefined): CatalogConfig {
     return { configured: false, reason: "NEXT_PUBLIC_CATALOG_CSV_URL belum diatur." };
   }
 
+  // Mendukung path root-relatif (misalnya /mock-products.csv untuk staging/preview)
+  if (value.startsWith("/")) {
+    if (value.includes("..") || !value.endsWith(".csv")) {
+      return {
+        configured: false,
+        reason: "NEXT_PUBLIC_CATALOG_CSV_URL berupa path relatif harus aman dan berakhiran .csv.",
+      };
+    }
+    return { configured: true, url: value };
+  }
+
   let parsed: URL;
   try {
     parsed = new URL(value);

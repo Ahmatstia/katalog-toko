@@ -58,4 +58,23 @@ describe("resolveCatalogConfig", () => {
       url: localUrl,
     });
   });
+
+  it("menerima path relatif berakhiran .csv untuk staging / preview", () => {
+    expect(resolveCatalogConfig("/mock-products.csv")).toEqual({
+      configured: true,
+      url: "/mock-products.csv",
+    });
+  });
+
+  it("menolak path relatif dengan traversal .. atau tidak berakhiran .csv", () => {
+    expect(resolveCatalogConfig("/../secret.csv")).toEqual({
+      configured: false,
+      reason: "NEXT_PUBLIC_CATALOG_CSV_URL berupa path relatif harus aman dan berakhiran .csv.",
+    });
+    expect(resolveCatalogConfig("/mock-products.json")).toEqual({
+      configured: false,
+      reason: "NEXT_PUBLIC_CATALOG_CSV_URL berupa path relatif harus aman dan berakhiran .csv.",
+    });
+  });
 });
+
